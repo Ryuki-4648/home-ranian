@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import wordList from '../wordList.json'
+import { Header } from '@/components/header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,15 +11,24 @@ type WordList = {
   word: string;
 }
 
+// 名前を入力してボタンをクリックすると、入力値＋褒め言葉が表示する
 const onClickButton = () => {
   const homeText = document.querySelector('.js-word');
   if (homeText) {
     const randomWord = wordList[Math.floor(Math.random() * wordList.length)];
     homeText.textContent = randomWord.word;
   }
+
+  const yourName = document.querySelector('.js-your-name');
+  if (yourName) {
+    const inputName = document.querySelector('.c-input-area') as HTMLInputElement;
+    if (inputName) {
+      yourName.textContent = inputName.value;
+    }
+  }
 }
 
-// click c-link and reset home text and your name and input name
+// リセットをクリックすると、入力値をリセットする
 const onClickLink = () => {
   const homeText = document.querySelector('.js-word');
   if (homeText) {
@@ -34,22 +44,6 @@ const onClickLink = () => {
   }
 }
 
-
-
-// click button and show input word in js-your-name
-const onClickButton2 = () => {
-  const yourName = document.querySelector('.js-your-name');
-  if (yourName) {
-    const inputName = document.querySelector('.c-input-area') as HTMLInputElement;
-    if (inputName) {
-      yourName.textContent = inputName.value;
-    }
-  }
-}
-
-
-
-
 export default function Home() {
   return (
     <>
@@ -62,11 +56,9 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
       </Head>
+      
       <main>
-        <header>
-          <h1 className="c-header__title">ほめらにあん。</h1>
-          <p className="c-header__text">あなたを褒める、ポメラニアン</p>
-        </header>
+        <Header />
         
         <div className="l-container">
           <div className="l-word-area">
@@ -84,7 +76,7 @@ export default function Home() {
           <div className="flex-box">
             <input className="c-input-area" type="text" placeholder="あなたの名前を入力してください" />
             <div className="button-area">
-              <button className="c-button" onClick={() => {onClickButton(); onClickButton2();}}>ぽめまるに褒めてもらう</button>
+              <button className="c-button" onClick={() => {onClickButton();}}>ぽめまるに褒めてもらう</button>
             </div>
             <p className="c-text-reset" onClick={onClickLink}>リセットする</p>
           </div>
