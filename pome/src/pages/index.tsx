@@ -4,8 +4,6 @@ import { Inter } from 'next/font/google'
 import wordList from '../wordList.json'
 import Header from '@/components/header'
 
-const inter = Inter({ subsets: ['latin'] })
-
 type WordList = {
   id: number;
   word: string;
