@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import wordList from '../wordList.json'
-import { Header } from '@/components/header'
+import Header from '@/components/header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -56,7 +56,7 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
       </Head>
-      
+
       <main>
         <Header />
         
@@ -82,7 +82,13 @@ export default function Home() {
           </div>
         </div>
 
-        <small className="c-text__copyright">&copy; 2023 ほめらにあん。 by R.YUKI Portfolio</small>
+        <div className="l-bottom">
+          <div className="l-bottom__link">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe5RJxhW1gDHo5JDDYZaLQrQS8Ip2kTloIIk4l9EhR2yrfHUA/viewform" target="_blank">お問い合わせ</a>
+            <a href="/privacy/">プライバシーポリシー</a>
+          </div>
+          <small className="c-text__copyright">&copy; 2023 ほめらにあん。 by R.YUKI Portfolio</small>
+        </div>
       </main>
     </>
   )

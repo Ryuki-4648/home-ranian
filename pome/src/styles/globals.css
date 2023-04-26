@@ -6,11 +6,13 @@
 body {
   background-color: #ffe3cf;
   color: #3b3a3a;
+  height: 100%;
   font-family: 'Zen Maru Gothic', sans-serif;
 }
 
 main {
-  width: 500px;
+  width: 460px;
+  padding: 0 20px;
   margin: 0 auto;
   height: 100vh;
   background-color: #fafafa;
@@ -18,8 +20,9 @@ main {
 @media screen and (max-width: 600px) {
   main {
     width: 90%;
-    margin: 20px;
+    margin: 20px auto;
     border-radius: 20px;
+    padding: 0;
   }
 }
 
@@ -47,6 +50,32 @@ header {
   margin: 0 auto 30px;
 }
 
+.l-bottom {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  width: 100%;
+}
+
+.l-bottom__link {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto 0;
+}
+
+.l-bottom__link a {
+  color: #3b3a3a;
+  font-size: 13px;
+  transition: all .3s;
+}
+.l-bottom__link a:hover {
+  opacity: .7;
+}
+.l-bottom__link a:first-of-type {
+  margin-right: 10px;
+}
+
 .c-header__title {
   text-align: center;
   margin: 0 auto 5px;
@@ -61,16 +90,36 @@ header {
   font-size: 13px;
   letter-spacing: 0.05em;
 }
+@media screen and (max-width: 600px) {
+  .c-header__text {
+    margin: 0 auto 30px;
+    font-size: 12px;
+  }
+}
 
 .c-image {
   text-align: center;
   margin: 0 auto 60px;
   display: block;
 }
+@media screen and (max-width: 600px) {
+  .c-image {
+    margin: 0 auto 30px;
+    width: 100px;
+    height: 128px;
+  }
+}
 
 .c-text__your-name {
   display: inline;
   margin: 0 5px 0 0;
+}
+@media screen and (max-width: 600px) {
+  .c-text__your-name {
+    margin: 0 auto;
+    padding: 0 10px;
+    font-size: 15px;
+  }
 }
 
 .c-text__home-word {
@@ -115,14 +164,12 @@ input::placeholder {
 }
 
 .c-text__copyright {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 10px;
   font-size: 12px;
   letter-spacing: 0.05em;
   width: 100%;
   text-align: center;
+  display: block;
+  margin: 5px auto 0;
 }
 
 .c-text-reset {
@@ -136,4 +183,31 @@ input::placeholder {
 
 .c-text-reset:hover {
   opacity: .7;
+}
+
+.p-privacy__main {
+  height: 100%;
+  padding-bottom: 40px;
+}
+.p-privacy__main h2 {
+  margin: 0 auto 20px;
+  font-size: 21px;
+}
+.p-privacy__main h3 {
+  margin: 0 auto 10px;
+  font-size: 18px;
+}
+.p-privacy__main .l-container p {
+  margin: 0 auto 30px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.p-privacy__main .l-container p:last-of-type {
+  margin-bottom: 0;
+}
+.p-privacy__main ol {
+  padding: 0 0 0 20px;
+  margin: 0 auto 30px;
+  text-align: left;
 }
