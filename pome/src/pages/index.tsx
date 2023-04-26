@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import wordList from '../wordList.json'
 import Header from '@/components/header'
+import { useState } from 'react'
 
 type WordList = {
   id: number;
@@ -10,39 +10,56 @@ type WordList = {
 }
 
 // 名前を入力してボタンをクリックすると、入力値＋褒め言葉が表示する
-const onClickButton = () => {
-  const homeText = document.querySelector('.js-word');
-  if (homeText) {
-    const randomWord = wordList[Math.floor(Math.random() * wordList.length)];
-    homeText.textContent = randomWord.word;
-  }
+// const onClickButton = () => {
+//   const homeText = document.querySelector('.js-word');
+//   if (homeText) {
+//     const randomWord = wordList[Math.floor(Math.random() * wordList.length)];
+//     homeText.textContent = randomWord.word;
+//   }
 
-  const yourName = document.querySelector('.js-your-name');
-  if (yourName) {
-    const inputName = document.querySelector('.c-input-area') as HTMLInputElement;
-    if (inputName) {
-      yourName.textContent = inputName.value;
-    }
-  }
-}
+//   const yourName = document.querySelector('.js-your-name');
+//   if (yourName) {
+//     const inputName = document.querySelector('.c-input-area') as HTMLInputElement;
+//     if (inputName) {
+//       yourName.textContent = inputName.value;
+//     }
+//   }
+// }
 
 // リセットをクリックすると、入力値をリセットする
-const onClickLink = () => {
-  const homeText = document.querySelector('.js-word');
-  if (homeText) {
-    homeText.textContent = '';
-  }
-  const yourName = document.querySelector('.js-your-name');
-  if (yourName) {
-    yourName.textContent = '名前を入れてボタンをクリックしてください。';
-  }
-  const inputName = document.querySelector('.c-input-area') as HTMLInputElement;
-  if (inputName) {
-    inputName.value = '';
-  }
-}
+// const onClickResetLink = () => {
+//   const homeText = document.querySelector('.js-word');
+//   if (homeText) {
+//     homeText.textContent = '';
+//   }
+//   const yourName = document.querySelector('.js-your-name');
+//   if (yourName) {
+//     yourName.textContent = '名前を入れてボタンをクリックしてください。';
+//   }
+//   const inputName = document.querySelector('.c-input-area') as HTMLInputElement;
+//   if (inputName) {
+//     inputName.value = '';
+//   }
+// }
 
 export default function Home() {
+
+  // 褒め言葉・入力値
+  const [homeWord, setHomeWord] = useState('');
+  const [yourName, setYourName] = useState('');
+
+  // ボタンをクリックしたら褒め言葉がランダムで表示される
+  const onClickButton = () => {
+    const randomWord = wordList[Math.floor(Math.random() * wordList.length)];
+    setHomeWord(randomWord.word);
+  };
+
+  // リセットしたら入力値をリセットする
+  const onClickResetLink = () => {
+    setHomeWord('');
+    setYourName('');
+  };
+
   return (
     <>
       <Head>
@@ -60,8 +77,8 @@ export default function Home() {
         
         <div className="l-container">
           <div className="l-word-area">
-            <p className="js-your-name c-text__your-name">名前を入れてボタンをクリックしてください。</p>
-            <p className="js-word c-text__home-word"></p>
+            <p className="js-your-name c-text__your-name">{yourName || '名前を入れてボタンをクリックしてください。'}</p>
+            <p className="js-word c-text__home-word">{homeWord}</p>
           </div>
           <Image
             src="/image01.png"
@@ -72,11 +89,11 @@ export default function Home() {
             className="c-image"
           />
           <div className="flex-box">
-            <input className="c-input-area" type="text" placeholder="あなたの名前を入力してください" />
+          <input className="c-input-area" type="text" value={yourName} onChange={(e) => setYourName(e.target.value)} placeholder="あなたの名前を入力してください" />
             <div className="button-area">
-              <button className="c-button" onClick={() => {onClickButton();}}>ぽめまるに褒めてもらう</button>
+              <button className="c-button" onClick={onClickButton}>ぽめまるに褒めてもらう</button>
             </div>
-            <p className="c-text-reset" onClick={onClickLink}>リセットする</p>
+            <p className="c-text-reset" onClick={onClickResetLink}>リセットする</p>
           </div>
         </div>
 
