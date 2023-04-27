@@ -36,8 +36,12 @@ export default function Home() {
         
         <div className="l-container">
           <div className="l-word-area">
-            <p className="js-your-name c-text__your-name">{yourName || '名前を入れてボタンをクリックしてください。'}</p>
-            <p className="js-word c-text__home-word">{homeWord}</p>
+            {homeWord && (
+              <>
+                <p className="js-your-name c-text__your-name">{yourName || '名前を入れてボタンをクリックしてください。'}</p>
+                <p className="js-word c-text__home-word">{homeWord}</p>
+              </>
+            )}
           </div>
           <Image
             src="/image01.png"
