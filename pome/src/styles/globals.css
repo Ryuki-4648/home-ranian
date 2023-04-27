@@ -19,10 +19,9 @@ main {
 }
 @media screen and (max-width: 600px) {
   main {
-    width: 90%;
+    width: 85%;
     margin: 20px auto;
     border-radius: 20px;
-    padding: 0;
   }
 }
 
@@ -48,14 +47,11 @@ header {
 
 .l-word-area {
   margin: 0 auto 30px;
+  min-height: 25px;
 }
 
 .l-bottom {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 10px;
-  width: 100%;
+  margin: 80px auto 0;
 }
 
 .l-bottom__link {
