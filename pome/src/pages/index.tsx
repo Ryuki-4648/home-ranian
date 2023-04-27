@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { useState } from 'react';
 import Header from '@/components/header';
 import Bottom from '@/components/bottom';
@@ -43,14 +42,7 @@ export default function Home() {
               </>
             )}
           </div>
-          <Image
-            src="/image01.png"
-            alt="ポメラニアンのイラスト"
-            width={160}
-            height={204}
-            priority
-            className="c-image"
-          />
+          <img src="/image01.png" alt="ポメラニアンのイラスト" className="c-image" />
           <div className="flex-box">
             <input className="c-input-area" type="text" value={yourName} onChange={(e) => setYourName(e.target.value)} placeholder="あなたの名前を入力してください" />
             <div className="button-area">
