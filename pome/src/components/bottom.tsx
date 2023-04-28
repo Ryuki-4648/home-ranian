@@ -10,7 +10,7 @@ export default function Bottom() {
           お問い合わせ
         </Link>
         <Link
-          href={"/home-ranian/privacy.html"}>
+          href={"/privacy.html"}>
           プライバシーポリシー
         </Link>
       </div>
